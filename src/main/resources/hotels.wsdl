@@ -1,0 +1,400 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://hotels.com/soap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://hotels.com/soap" targetNamespace="http://hotels.com/soap">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://hotels.com/soap">
+            <!--  Hotel services  -->
+            <xs:element name="GetHotelDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllHotelDetailsRequest">
+                <xs:complexType> </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllHotelDetailsByNameRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllHotelDetailsByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveHotelDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddAmenityDetailsToHotelDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_hotel" type="xs:long"/>
+                        <xs:element name="id_amenity" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddAmenityDetailsToHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveAmenityDetailsToHotelDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_hotel" type="xs:long"/>
+                        <xs:element name="id_amenity" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveAmenityDetailsToHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HotelDetails" type="tns:HotelDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteHotelDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteHotelDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!--  Hotel services  -->
+            <!--  Amenity services  -->
+            <xs:element name="GetAllAmenityDetailsRequest">
+                <xs:complexType> </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllAmenityDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="AmenityDetails" type="tns:AmenityDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllAmenityDetailsByHotelRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_hotel" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllAmenityDetailsByHotelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="AmenityDetails" type="tns:AmenityDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveAmenityDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="description" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveAmenityDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AmenityDetails" type="tns:AmenityDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteAmenityDetailsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteAmenityDetailsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!--  Amenity services  -->
+            <xs:complexType name="ServiceStatus">
+                <xs:sequence>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HotelDetails">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="address" type="xs:string"/>
+                    <xs:element name="rating" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="AmenityDetails" type="tns:AmenityDetails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AmenityDetails">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="DeleteAmenityDetailsRequest">
+        <wsdl:part element="tns:DeleteAmenityDetailsRequest" name="DeleteAmenityDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetHotelDetailsResponse">
+        <wsdl:part element="tns:GetHotelDetailsResponse" name="GetHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RemoveAmenityDetailsToHotelDetailsRequest">
+        <wsdl:part element="tns:RemoveAmenityDetailsToHotelDetailsRequest" name="RemoveAmenityDetailsToHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllHotelDetailsRequest">
+        <wsdl:part element="tns:GetAllHotelDetailsRequest" name="GetAllHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllAmenityDetailsByHotelRequest">
+        <wsdl:part element="tns:GetAllAmenityDetailsByHotelRequest" name="GetAllAmenityDetailsByHotelRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetHotelDetailsRequest">
+        <wsdl:part element="tns:GetHotelDetailsRequest" name="GetHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllAmenityDetailsRequest">
+        <wsdl:part element="tns:GetAllAmenityDetailsRequest" name="GetAllAmenityDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllAmenityDetailsByHotelResponse">
+        <wsdl:part element="tns:GetAllAmenityDetailsByHotelResponse" name="GetAllAmenityDetailsByHotelResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllHotelDetailsByNameRequest">
+        <wsdl:part element="tns:GetAllHotelDetailsByNameRequest" name="GetAllHotelDetailsByNameRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllHotelDetailsByNameResponse">
+        <wsdl:part element="tns:GetAllHotelDetailsByNameResponse" name="GetAllHotelDetailsByNameResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SaveAmenityDetailsRequest">
+        <wsdl:part element="tns:SaveAmenityDetailsRequest" name="SaveAmenityDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SaveAmenityDetailsResponse">
+        <wsdl:part element="tns:SaveAmenityDetailsResponse" name="SaveAmenityDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllHotelDetailsResponse">
+        <wsdl:part element="tns:GetAllHotelDetailsResponse" name="GetAllHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SaveHotelDetailsResponse">
+        <wsdl:part element="tns:SaveHotelDetailsResponse" name="SaveHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AddAmenityDetailsToHotelDetailsRequest">
+        <wsdl:part element="tns:AddAmenityDetailsToHotelDetailsRequest" name="AddAmenityDetailsToHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteHotelDetailsResponse">
+        <wsdl:part element="tns:DeleteHotelDetailsResponse" name="DeleteHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SaveHotelDetailsRequest">
+        <wsdl:part element="tns:SaveHotelDetailsRequest" name="SaveHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllAmenityDetailsResponse">
+        <wsdl:part element="tns:GetAllAmenityDetailsResponse" name="GetAllAmenityDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AddAmenityDetailsToHotelDetailsResponse">
+        <wsdl:part element="tns:AddAmenityDetailsToHotelDetailsResponse" name="AddAmenityDetailsToHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteAmenityDetailsResponse">
+        <wsdl:part element="tns:DeleteAmenityDetailsResponse" name="DeleteAmenityDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RemoveAmenityDetailsToHotelDetailsResponse">
+        <wsdl:part element="tns:RemoveAmenityDetailsToHotelDetailsResponse" name="RemoveAmenityDetailsToHotelDetailsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteHotelDetailsRequest">
+        <wsdl:part element="tns:DeleteHotelDetailsRequest" name="DeleteHotelDetailsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="HotelPort">
+        <wsdl:operation name="DeleteAmenityDetails">
+            <wsdl:input message="tns:DeleteAmenityDetailsRequest" name="DeleteAmenityDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:DeleteAmenityDetailsResponse" name="DeleteAmenityDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetHotelDetails">
+            <wsdl:input message="tns:GetHotelDetailsRequest" name="GetHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:GetHotelDetailsResponse" name="GetHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveAmenityDetailsToHotelDetails">
+            <wsdl:input message="tns:RemoveAmenityDetailsToHotelDetailsRequest" name="RemoveAmenityDetailsToHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:RemoveAmenityDetailsToHotelDetailsResponse" name="RemoveAmenityDetailsToHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllHotelDetails">
+            <wsdl:input message="tns:GetAllHotelDetailsRequest" name="GetAllHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:GetAllHotelDetailsResponse" name="GetAllHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllAmenityDetailsByHotel">
+            <wsdl:input message="tns:GetAllAmenityDetailsByHotelRequest" name="GetAllAmenityDetailsByHotelRequest"> </wsdl:input>
+            <wsdl:output message="tns:GetAllAmenityDetailsByHotelResponse" name="GetAllAmenityDetailsByHotelResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllAmenityDetails">
+            <wsdl:input message="tns:GetAllAmenityDetailsRequest" name="GetAllAmenityDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:GetAllAmenityDetailsResponse" name="GetAllAmenityDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllHotelDetailsByName">
+            <wsdl:input message="tns:GetAllHotelDetailsByNameRequest" name="GetAllHotelDetailsByNameRequest"> </wsdl:input>
+            <wsdl:output message="tns:GetAllHotelDetailsByNameResponse" name="GetAllHotelDetailsByNameResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveAmenityDetails">
+            <wsdl:input message="tns:SaveAmenityDetailsRequest" name="SaveAmenityDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:SaveAmenityDetailsResponse" name="SaveAmenityDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveHotelDetails">
+            <wsdl:input message="tns:SaveHotelDetailsRequest" name="SaveHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:SaveHotelDetailsResponse" name="SaveHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddAmenityDetailsToHotelDetails">
+            <wsdl:input message="tns:AddAmenityDetailsToHotelDetailsRequest" name="AddAmenityDetailsToHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:AddAmenityDetailsToHotelDetailsResponse" name="AddAmenityDetailsToHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteHotelDetails">
+            <wsdl:input message="tns:DeleteHotelDetailsRequest" name="DeleteHotelDetailsRequest"> </wsdl:input>
+            <wsdl:output message="tns:DeleteHotelDetailsResponse" name="DeleteHotelDetailsResponse"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HotelPortSoap11" type="tns:HotelPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="DeleteAmenityDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="DeleteAmenityDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteAmenityDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveAmenityDetailsToHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="RemoveAmenityDetailsToHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemoveAmenityDetailsToHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetAllHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllAmenityDetailsByHotel">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetAllAmenityDetailsByHotelRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllAmenityDetailsByHotelResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllAmenityDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetAllAmenityDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllAmenityDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllHotelDetailsByName">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetAllHotelDetailsByNameRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllHotelDetailsByNameResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveAmenityDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="SaveAmenityDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SaveAmenityDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="SaveHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SaveHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddAmenityDetailsToHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="AddAmenityDetailsToHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AddAmenityDetailsToHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteHotelDetails">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="DeleteHotelDetailsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteHotelDetailsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HotelPortService">
+        <wsdl:port binding="tns:HotelPortSoap11" name="HotelPortSoap11">
+            <soap:address location="http://localhost:8081/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
