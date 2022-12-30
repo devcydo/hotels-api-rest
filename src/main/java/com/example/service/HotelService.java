@@ -1,6 +1,5 @@
 package com.example.service;
 
-import com.example.model.Amenity;
 import com.example.model.Hotel;
 import com.example.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,9 @@ public class HotelService {
     }
 
     public Hotel getById(long id) {
-        return hotelRepository.findById(id);
+        Hotel hotel = hotelRepository.findById(id);
+
+        return hotel;
     }
 
     public Hotel save(Hotel hotel) { return hotelRepository.save(hotel); }

@@ -1,9 +1,12 @@
 package com.example.client.config;
 
+import com.example.client.AmenityClient;
 import com.example.client.HotelClient;
+import com.example.exception.SoapClientInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 
 @Configuration
 public class SoapClientConfig {
@@ -20,6 +23,21 @@ public class SoapClientConfig {
         client.setDefaultUri("http://localhost:8081/ws");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
+        ClientInterceptor[] clientInterceptors = { new SoapClientInterceptor() };
+        client.setInterceptors(clientInterceptors);
         return client;
     }
+
+    @Bean
+    public AmenityClient amenityClient(Jaxb2Marshaller marshaller) {
+        AmenityClient client = new AmenityClient();
+        client.setDefaultUri("http://localhost:8081/ws");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        ClientInterceptor[] clientInterceptors = { new SoapClientInterceptor() };
+        client.setInterceptors(clientInterceptors);
+        return client;
+    }
+
+
 }
