@@ -3,7 +3,6 @@ package com.example.controller;
 import com.example.body.AddAmenity;
 import com.example.model.Hotel;
 import com.example.service.HotelService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,6 @@ public class HotelController {
 
     private HotelService hotelService;
 
-    @Autowired
     public HotelController(HotelService hotelService) {
         this.hotelService = hotelService;
     }
@@ -71,6 +69,11 @@ public class HotelController {
             return new ResponseEntity<String>("Deleted", HttpStatus.OK);
         }
         return new ResponseEntity<String>("Error deleting", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public final ResponseEntity<Exception> handleAllExceptions(RuntimeException ex) {
+        return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

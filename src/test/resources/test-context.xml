@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hotelService" class="com.example.service.HotelService" />
+    <bean id="hotelRepository" class="com.example.repository.HotelRepository" />
+    <bean id="hotelController" class="com.example.controller.HotelController" />
+    <bean id="hotelClientImpl" class="com.example.client.HotelClient" />
+    <bean id="hotelClientConfig" class="com.example.client.config.SoapClientConfig" />
+</beans>

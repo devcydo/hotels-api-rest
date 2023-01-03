@@ -2,7 +2,6 @@ package com.example.service;
 
 import com.example.model.Hotel;
 import com.example.repository.HotelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @Service
 public class HotelService {
 
-    @Autowired
     private HotelRepository hotelRepository;
+
+    public HotelService(HotelRepository hotelRepository) {
+        this.hotelRepository = hotelRepository;
+    }
 
     public List<Hotel> getAll() {
         return hotelRepository.findAll();
