@@ -1,10 +1,8 @@
 package com.example.repository;
 
-import com.example.client.AmenityClient;
-import com.example.client.HotelClient;
-import com.example.client.config.SoapClientConfig;
+import com.example.wsclient.AmenityClient;
+import com.example.wsclient.config.SoapClientConfig;
 import com.example.model.Amenity;
-import com.example.model.Hotel;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Repository;
 

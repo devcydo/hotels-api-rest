@@ -1,7 +1,6 @@
-package com.example.client;
+package com.example.wsclient;
 
 import com.example.model.Amenity;
-import com.example.model.Hotel;
 import com.hotels.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 

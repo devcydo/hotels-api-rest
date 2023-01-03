@@ -1,8 +1,8 @@
-package com.example.client.config;
+package com.example.wsclient.config;
 
-import com.example.client.AmenityClient;
-import com.example.client.HotelClient;
-import com.example.exception.SoapClientInterceptor;
+import com.example.wsclient.AmenityClient;
+import com.example.wsclient.HotelClient;
+import com.example.wsclient.SoapClientInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;

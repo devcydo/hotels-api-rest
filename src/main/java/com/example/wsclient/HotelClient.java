@@ -1,4 +1,4 @@
-package com.example.client;
+package com.example.wsclient;
 
 import com.example.model.Amenity;
 import com.example.model.Hotel;

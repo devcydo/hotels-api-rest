@@ -1,7 +1,7 @@
 package com.example.repository;
 
-import com.example.client.HotelClient;
-import com.example.client.config.SoapClientConfig;
+import com.example.wsclient.HotelClient;
+import com.example.wsclient.config.SoapClientConfig;
 import com.example.model.Hotel;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
