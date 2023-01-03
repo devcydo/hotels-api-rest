@@ -1,8 +1,9 @@
 package com.example.wsclient;
 
-import com.example.model.Amenity;
 import com.example.model.Hotel;
 import com.hotels.*;
+
+import static com.example.helper.HotelHelper.*;
 
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
@@ -94,45 +95,5 @@ public class HotelClient extends WebServiceGatewaySupport {
 
         return response.getServiceStatus().getStatusCode().equals("SUCCESS");
     }
-
-    private Hotel toHotel(HotelDetails hotelDetails) {
-        Hotel hotel = new Hotel();
-
-        List<Amenity> amenities = new ArrayList<>();
-
-        hotel.setId(hotelDetails.getId());
-        hotel.setName(hotelDetails.getName());
-        hotel.setAddress(hotelDetails.getAddress());
-        hotel.setRating(hotelDetails.getRating());
-
-        Optional.ofNullable(hotelDetails.getAmenityDetails())
-                .orElseGet(Collections::emptyList)
-                .stream().forEach(amenityDetails -> amenities.add(toAmenity(amenityDetails)));
-
-        hotel.setAmenities(amenities);
-        return hotel;
-    }
-
-    private Amenity toAmenity(AmenityDetails amenityDetails) {
-        Amenity amenity = new Amenity();
-
-        amenity.setId(amenityDetails.getId());
-        amenity.setName(amenityDetails.getName());
-        amenity.setDescription(amenityDetails.getDescription());
-
-        return amenity;
-    }
-
-    private HotelDetails toHotelDetails(Hotel hotel) {
-        HotelDetails hotelDetails = new HotelDetails();
-
-        hotelDetails.setId(hotel.getId());
-        hotelDetails.setName(hotel.getName());
-        hotelDetails.setAddress(hotel.getAddress());
-        hotelDetails.setRating(hotel.getRating());
-
-        return hotelDetails;
-    }
-
 
 }
