@@ -2,27 +2,27 @@ package com.example.controller;
 
 import com.example.body.AddAmenity;
 import com.example.model.Hotel;
-import com.example.service.HotelService;
+import com.example.service.HotelServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/hotels")
 public class HotelController {
 
-    private HotelService hotelService;
+    private final HotelServiceImpl hotelService;
 
-    public HotelController(HotelService hotelService) {
+    public HotelController(HotelServiceImpl hotelService) {
         this.hotelService = hotelService;
     }
 
     @GetMapping
-    public List<Hotel> getAll() {
-        List<Hotel> hotels = hotelService.getAll();
-        return hotels;
+    public List<Hotel> getAll(Integer page, String filterByName) {
+        return hotelService.getAll(Optional.ofNullable(page).orElse(0), Optional.ofNullable(filterByName).orElse(""));
     }
 
     @GetMapping("/{id}")
@@ -31,15 +31,9 @@ public class HotelController {
         return hotelService.getById(id);
     }
 
-    @GetMapping("/search/{name}")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Hotel> filterByName(@PathVariable String name) {
-        return hotelService.filterByName(name);
-    }
-
     @PostMapping
     public ResponseEntity<Hotel> create(@RequestBody Hotel hotel) {
-        Hotel h = hotelService.save(hotel);
+        Hotel h = hotelService.createHotel(hotel);
         return new ResponseEntity<Hotel>(h, HttpStatus.CREATED);
     }
 
@@ -58,7 +52,7 @@ public class HotelController {
     @PutMapping("/{id}")
     public ResponseEntity<Hotel> edit(@PathVariable long id, @RequestBody Hotel hotel) {
         hotel.setId(id);
-        Hotel h = hotelService.save(hotel);
+        Hotel h = hotelService.editHotel(hotel);
         return new ResponseEntity<Hotel>(h, HttpStatus.OK);
     }
 
@@ -70,11 +64,5 @@ public class HotelController {
         }
         return new ResponseEntity<String>("Error deleting", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    @ExceptionHandler(RuntimeException.class)
-    public final ResponseEntity<Exception> handleAllExceptions(RuntimeException ex) {
-        return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
 
 }

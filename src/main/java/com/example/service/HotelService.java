@@ -1,43 +1,16 @@
 package com.example.service;
 
 import com.example.model.Hotel;
-import com.example.repository.HotelRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class HotelService {
+public interface HotelService {
 
-    private HotelRepository hotelRepository;
-
-    public HotelService(HotelRepository hotelRepository) {
-        this.hotelRepository = hotelRepository;
-    }
-
-    public List<Hotel> getAll() {
-        return hotelRepository.findAll();
-    }
-
-    public List<Hotel> filterByName(String name) {
-        return hotelRepository.filterByName(name);
-    }
-
-    public Hotel getById(long id) {
-        Hotel hotel = hotelRepository.findById(id);
-
-        return hotel;
-    }
-
-    public Hotel save(Hotel hotel) { return hotelRepository.save(hotel); }
-
-    public boolean deleteById(long id) { return hotelRepository.deleteById(id); }
-
-    public Hotel addAmenityToHotel(long id_hotel, long id_amenity) {
-        return hotelRepository.addAmenityToHotel(id_hotel, id_amenity);
-    }
-
-    public Hotel removeAmenityToHotel(long id_hotel, long id_amenity) {
-        return hotelRepository.removeAmenityToHotel(id_hotel, id_amenity);
-    }
+    List<Hotel> getAll(Integer pageNumber, String filterByName);
+    Hotel getById(long id);
+    Hotel createHotel(Hotel hotel);
+    Hotel editHotel(Hotel hotel);
+    boolean deleteById(long id);
+    Hotel addAmenityToHotel(long id_hotel, long id_amenity);
+    Hotel removeAmenityToHotel(long id_hotel, long id_amenity);
 }

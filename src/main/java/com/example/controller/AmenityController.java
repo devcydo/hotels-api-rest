@@ -12,33 +12,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/amenities")
 public class AmenityController {
-    private AmenityService amenityService;
+    private final AmenityService amenityService;
 
     @Autowired
     public AmenityController(AmenityService amenityService) { this.amenityService = amenityService; };
 
     @GetMapping
     public List<Amenity> getAll() {
-        List<Amenity> amenities = amenityService.getAll();
-        return amenities;
+        return amenityService.getAll();
     }
 
     @GetMapping("/hotels/{id}")
     public List<Amenity> getByHotelId(@PathVariable long id) {
-        List<Amenity> amenities = amenityService.getByHotelId(id);
-        return amenities;
+        return amenityService.getByHotelId(id);
     }
 
     @PostMapping
     public ResponseEntity<Amenity> create(@RequestBody Amenity amenity) {
-        Amenity a = amenityService.save(amenity);
+        Amenity a = amenityService.createAmenity(amenity);
         return new ResponseEntity<Amenity>(a, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Amenity> edit(@PathVariable long id, @RequestBody Amenity amenity) {
         amenity.setId(id);
-        Amenity a = amenityService.save(amenity);
+        Amenity a = amenityService.editAmenity(amenity);
         return new ResponseEntity<Amenity>(a, HttpStatus.OK);
     }
 

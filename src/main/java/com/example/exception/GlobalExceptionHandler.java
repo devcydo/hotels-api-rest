@@ -9,7 +9,7 @@ import org.springframework.ws.client.WebServiceClientException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> resourcenNotFound(ResourceNotFoundException ex) {
+    public ResponseEntity<String> resourceNotFound(ResourceNotFoundException ex) {
         String response = ex.getMessage();
         return new ResponseEntity<String>(response, HttpStatus.NOT_FOUND);
     }

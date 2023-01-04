@@ -1,24 +1,18 @@
 package com.example.service;
 
 import com.example.model.Amenity;
-import com.example.repository.AmenityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AmenityService {
+public interface AmenityService {
+    List<Amenity> getAll();
 
-    @Autowired
-    private AmenityRepository amenityRepository;
+    List<Amenity> getByHotelId(long id_hotel);
 
-    public List<Amenity> getAll() { return amenityRepository.findAll(); }
+    Amenity createAmenity(Amenity amenity);
+    Amenity editAmenity(Amenity amenity);
 
-    public List<Amenity> getByHotelId(long id_hotel) { return amenityRepository.findByHotelId(id_hotel); }
-
-    public Amenity save(Amenity amenity) { return amenityRepository.save(amenity); }
-
-    public boolean deleteById(long id) { return amenityRepository.deleteById(id); }
-
+    boolean deleteById(long id);
 }

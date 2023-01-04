@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id_hotel" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="id_amenity" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="HotelDetails" type="{http://hotels.com/soap}HotelDetails"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,47 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "idHotel",
-    "idAmenity"
+    "hotelDetails"
 })
-@XmlRootElement(name = "RemoveAmenityDetailsToHotelDetailsRequest")
-public class RemoveAmenityDetailsToHotelDetailsRequest {
+@XmlRootElement(name = "EditHotelDetailsResponse")
+public class EditHotelDetailsResponse {
 
-    @XmlElement(name = "id_hotel")
-    protected long idHotel;
-    @XmlElement(name = "id_amenity")
-    protected long idAmenity;
+    @XmlElement(name = "HotelDetails", required = true)
+    protected HotelDetails hotelDetails;
 
     /**
-     * Gets the value of the idHotel property.
+     * Gets the value of the hotelDetails property.
      * 
+     * @return
+     *     possible object is
+     *     {@link HotelDetails }
+     *     
      */
-    public long getIdHotel() {
-        return idHotel;
+    public HotelDetails getHotelDetails() {
+        return hotelDetails;
     }
 
     /**
-     * Sets the value of the idHotel property.
+     * Sets the value of the hotelDetails property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link HotelDetails }
+     *     
      */
-    public void setIdHotel(long value) {
-        this.idHotel = value;
-    }
-
-    /**
-     * Gets the value of the idAmenity property.
-     * 
-     */
-    public long getIdAmenity() {
-        return idAmenity;
-    }
-
-    /**
-     * Sets the value of the idAmenity property.
-     * 
-     */
-    public void setIdAmenity(long value) {
-        this.idAmenity = value;
+    public void setHotelDetails(HotelDetails value) {
+        this.hotelDetails = value;
     }
 
 }

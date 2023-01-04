@@ -6,10 +6,7 @@ import com.hotels.AmenityDetails;
 import com.hotels.HotelDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class HotelHelper {
@@ -39,6 +36,12 @@ public class HotelHelper {
         amenity.setDescription(amenityDetails.getDescription());
 
         return amenity;
+    }
+
+    public static List<Hotel> toHotels(Collection<HotelDetails> allHotelsDetails) {
+        List<Hotel> hotels = new ArrayList<>();
+        allHotelsDetails.forEach(hotelDetails -> hotels.add(toHotel(hotelDetails)));
+        return hotels;
     }
 
     public static HotelDetails toHotelDetails(Hotel hotel) {
