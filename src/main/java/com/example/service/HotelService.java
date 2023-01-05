@@ -5,7 +5,6 @@ import com.example.model.Hotel;
 import java.util.List;
 
 public interface HotelService {
-
     List<Hotel> getAll(Integer pageNumber, String filterByName);
     Hotel getById(long id);
     Hotel createHotel(Hotel hotel);

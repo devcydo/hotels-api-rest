@@ -12,6 +12,7 @@ public interface AmenityService {
     List<Amenity> getByHotelId(long id_hotel);
 
     Amenity createAmenity(Amenity amenity);
+
     Amenity editAmenity(Amenity amenity);
 
     boolean deleteById(long id);
