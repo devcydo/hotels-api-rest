@@ -48,6 +48,10 @@ public class Hotel {
         this.rating = rating;
     }
 
+    public List<Amenity> getAmenities() {
+        return amenities;
+    }
+
     public void setAmenities(List<Amenity> amenities) {
         this.amenities = amenities;
     }

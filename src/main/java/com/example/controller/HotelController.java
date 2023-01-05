@@ -21,15 +21,15 @@ public class HotelController {
         this.hotelService = hotelService;
     }
 
-    @GetMapping
-    public List<Hotel> getAll(Integer page, String filterByName) {
-        return hotelService.getAll(Optional.ofNullable(page).orElse(0), Optional.ofNullable(filterByName).orElse(""));
-    }
-
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Hotel getById(@PathVariable long id) {
         return hotelService.getById(id);
+    }
+
+    @GetMapping
+    public List<Hotel> getAll(Integer page, String filterByName) {
+        return hotelService.getAll(Optional.ofNullable(page).orElse(0), Optional.ofNullable(filterByName).orElse(""));
     }
 
     @PostMapping

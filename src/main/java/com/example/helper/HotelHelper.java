@@ -13,16 +13,13 @@ public class HotelHelper {
     public static Hotel toHotel(HotelDetails hotelDetails) {
         Hotel hotel = new Hotel();
 
-        List<Amenity> amenities = new ArrayList<>();
-
         hotel.setId(hotelDetails.getId());
         hotel.setName(hotelDetails.getName());
         hotel.setAddress(hotelDetails.getAddress());
         hotel.setRating(hotelDetails.getRating());
 
-        Optional.ofNullable(hotelDetails.getAmenityDetails())
-                .orElseGet(Collections::emptyList)
-                .stream().forEach(amenityDetails -> amenities.add(toAmenity(amenityDetails)));
+        List<Amenity> amenities = new ArrayList<>();
+        hotelDetails.getAmenityDetails().forEach(amenityDetails -> amenities.add(toAmenity(amenityDetails)));
 
         hotel.setAmenities(amenities);
         return hotel;
