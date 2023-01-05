@@ -1,4 +1,4 @@
-package com.example.unit.repository;
+package com.example.unit.controller;
 
 import com.example.controller.HotelController;
 import com.example.model.Amenity;
@@ -17,11 +17,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
 @ExtendWith(MockitoExtension.class)
-@ContextConfiguration(locations = "/test-context.xml")
+@ContextConfiguration(locations = "/hotel-context.xml")
 @WebAppConfiguration
 public class HotelControllerTest {
 
@@ -29,15 +29,15 @@ public class HotelControllerTest {
     private HotelServiceImpl hotelService;
 
     @InjectMocks
-    private HotelController hotelController;
+    private HotelController underTest;
 
     private static Hotel testHotel = new Hotel();
 
     @BeforeEach
     void setup() {
-        testHotel.setId(10002L);
-        testHotel.setName("Sleep Inn Guadalajara Galerias Test");
-        testHotel.setAddress("AVENIDA VALLARTA, ESQUINA JOSE CLEMENTE OROZCO, ZAPOPAN, JAL, 45018, MX");
+        testHotel.setId(10100L);
+        testHotel.setName("Hotel from REST TEST");
+        testHotel.setAddress("Av testing, Col. Test. Testable, Test");
         testHotel.setRating(2);
 
         Amenity firstAmenity = new Amenity();
@@ -57,6 +57,31 @@ public class HotelControllerTest {
 
     @Test
     void getHotels() {
+        underTest.getAll(0, "");
+        verify(hotelService).getAll(0, "");
+    }
 
+    @Test
+    void getHotelById() {
+        underTest.getById(10100L);
+        verify(hotelService).getById(10100L);
+    }
+
+    @Test
+    void createHotel() {
+        underTest.create(testHotel);
+        verify(hotelService).createHotel(testHotel);
+    }
+
+    @Test
+    void updateHotel() {
+        underTest.edit(10100L, testHotel);
+        verify(hotelService).editHotel(testHotel);
+    }
+
+    @Test
+    void deleteHotelById() {
+        underTest.delete(10100L);
+        verify(hotelService).deleteById(10100L);
     }
 }

@@ -1,13 +1,10 @@
 package com.example.controller;
 
 import com.example.body.AddAmenity;
-import com.example.exception.BadRequestException;
 import com.example.model.Hotel;
 import com.example.service.HotelServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,7 +33,7 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<Hotel> create(@Valid @RequestBody Hotel hotel, BindingResult result) {
+    public ResponseEntity<Hotel> create(@Valid @RequestBody Hotel hotel) {
         Hotel h = hotelService.createHotel(hotel);
         return new ResponseEntity<Hotel>(h, HttpStatus.CREATED);
     }

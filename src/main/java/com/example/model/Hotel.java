@@ -16,21 +16,6 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(String name, String address, int rating) {
-        this.name = name;
-        this.address = address;
-        this.rating = rating;
-    }
-
-
-    public Hotel(long id, String name, String address, int rating, List<Amenity> amenities) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.rating = rating;
-        this.amenities = amenities;
-    }
-
     public long getId() {
         return id;
     }
@@ -61,10 +46,6 @@ public class Hotel {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public List<Amenity> getAmenities() {
-        return amenities;
     }
 
     public void setAmenities(List<Amenity> amenities) {

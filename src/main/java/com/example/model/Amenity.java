@@ -10,12 +10,6 @@ public class Amenity {
     public Amenity() {
     }
 
-    public Amenity(long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
     public long getId() {
         return id;
     }

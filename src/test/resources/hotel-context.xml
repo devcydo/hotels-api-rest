@@ -5,9 +5,9 @@
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="hotelService" class="com.example.service.HotelService" />
-    <bean id="hotelRepository" class="com.example.repository.HotelRepository" />
+    <bean id="hotelServiceImpl" class="com.example.service.HotelServiceImpl" />
     <bean id="hotelController" class="com.example.controller.HotelController" />
+    <bean id="hotelHelper" class="com.example.helper.HotelHelper" />
     <bean id="hotelClientImpl" class="com.example.wsclient.HotelClient" />
     <bean id="hotelClientConfig" class="com.example.wsclient.config.SoapClientConfig" />
 </beans>
