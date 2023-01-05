@@ -20,3 +20,9 @@ Contains REST API for Hotels demo
 ### Getting started
 
 You need a tomcat server to be able to run the project
+
+You can generate the .war file by running:
+```
+mvn clean install
+```
+Then you can deploy it to your tomcat server.
